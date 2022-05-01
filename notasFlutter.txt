@@ -173,8 +173,8 @@ permite variables dinamicar, permite hacer aplicaciones Android y IOS
 -  return '$texto $nombre';
 - }
 
-- String saludarString3({String texto,String nombre}) => '$texto $nombre'; 
-  
+- String saludarString3({String texto,String nombre}) => '$texto $nombre';
+
 //////////////// funciones ////////////////
 
 //////////////// clases ////////////////
@@ -231,9 +231,9 @@ permite variables dinamicar, permite hacer aplicaciones Android y IOS
 
   // los metodos son los que se encuentran dentro de una funcion
     // en las clases no es nesesario poner .this
-  
+
 - String toString() => 'Nombre: $nombre - Poder: $poder';
- 
+
 -}
 
 //////////////// clases trucos ////////////////
