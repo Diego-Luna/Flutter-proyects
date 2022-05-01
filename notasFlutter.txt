@@ -1,0 +1,239 @@
+//////////////// Flutter Que es ////////////////
+En fluter se usan mucho las clases, es un lenguaje tipado, simpre espera un ;
+permite variables dinamicar, permite hacer aplicaciones Android y IOS
+//////////////// Flutter Que es////////////////
+
+//////////////// Flutter ////////////////
+
+- void main() {
+-  print("Hola mundo");
+  
+  //--Data-- dart es un lenguaje tipado, y si empre espera el ;
+-  var nombre = 'diego';
+-  String nombre2 = 'diego ponindole String';
+
+  
+  //--Data-- son diferentes manera de aser lo mismo
+  
+- print('hola diego');
+-  print('hola '+ nombre);
+-  print('hola $nombre');
+- }
+//////////////// Flutter ////////////////
+
+//////////////// tipos de datos numero y string ////////////////
+ //-Data- numeros
+  
+  //int solo numeros enteros
+-  int empleados = 20;
+  
+  //double es para los deciamles
+-  double pi = 3.1416;
+  // double ponerle un decimal
+-  double numero = 1.0;
+  
+  // a esto se le llama interpolacion de strigs
+-  print('$empleados + $pi + $numero');
+  
+    //-Data- string 
+  //es en mayusculas por es una clase
+-  String
+  
+   
+  //-Data- string Todo es un objeto 
+  //es en mayusculas por es una clase
+- String nombre = 'diego';
+- String nombre2 = 'die\'go';
+  
+-  print(nombre2);
+
+  // para poder sacar el primer caracter
+- print(nombre[0]);
+- print(nombre[ nombre.length -1 ]);
+  
+//////////////// tipos de datos numero y string ////////////////
+
+//////////////// tipos de datos bool ////////////////
+- void main(){
+-   var activado = true;
+-   bool boolActivado = true;
+-   print(boolActivado);
+  
+  // no se nesesitan los 3 ,===
+-   if(activado == true){
+-     print('esta-prendido');
+-   }else {
+-     print('esta-apagado');
+-   }
+  
+  //cambiamos el valor
+  
+-   boolActivado=!boolActivado;
+  
+-   if(boolActivado){
+-     print('es verdadero');
+-   }else {
+-     print('es false');
+-   }
+-   if(!boolActivado){
+-     print('es falso');
+-   }else {
+-     print('es verdadero');
+-   }
+  
+- }
+//////////////// tipos de datos bool ////////////////
+
+//////////////// Lsitas ////////////////
+- void main(){
+-  //listas, pude tenor cualquier datos
+-  List numeros = [1,2,3,4,5];
+-  print(numeros);
+  //agregamos un nuevo datos y puede ser cualquier cosa
+-  numeros.add(6);
+-  numeros.add('hola tacos');
+  
+-  print(numeros);
+  
+  //
+-  List<int> numerosEnteros = [1,2,3,4];
+-  print(numerosEnteros);
+  //agregamos un nuevo datos y puede ser cualquier cosa
+-  numerosEnteros.add(6);
+-  print(numerosEnteros);
+  
+  //tamaño fijo
+-  List masNumeros = List(10);
+  //no puede tener mas de 10 masNumeros.add(1);
+-  masNumeros[0] = 1;
+-  print(masNumeros);
+
+}
+//////////////// Lsitas ////////////////
+
+//////////////// Maps ////////////////
+- void main(){
+  //Map, va a hacer un objeto , paser de valores
+-  Map persona = {
+-    'name'    : "diego",
+-    'edad'    : 18,
+-    'soltero'   : true
+-  };
+  
+-  String propiedad = 'soltero';
+  
+-  Map<String, dynamic> personas = {
+-    'name'    : "diego",
+-    'edad'    : 18,
+-    'soltero'   : true
+-  };
+  
+  
+  // para sacar el valor se pone entre commillas
+-  print(personas['name']);
+-  print(personas[ propiedad ]);
+  
+-  Map<int, String > personass = {
+-    1: 'tony',
+-    2: 'peter',
+-    5: 'eleven'
+-  };
+  
+-  personass.addAll({4:'Luna'});
+-  print(personass[2]); 
+-}
+//////////////// Maps ////////////////
+
+//////////////// funciones ////////////////
+//void es que no regresa nada
+- void main(){
+-  //saludarvoid();
+
+-  var mensaje = saludarString('hola','diego');
+-  var mensaje2 = saludarString3(texto:'hola',nombre:'diego');
+
+  
+-  print(mensaje2);
+- }
+
+ // funcion sin definir el tipo
+- saludar(){
+-  print('Hola');
+- }
+
+- void saludarvoid(){
+-  print('con void no regresa nada');
+- }
+
+- String saludarString(String texto,String nombre){
+-  return '$texto $nombre';
+- }
+
+- String saludarString2({String texto,String nombre}){
+-  return '$texto $nombre';
+- }
+
+- String saludarString3({String texto,String nombre}) => '$texto $nombre'; 
+  
+//////////////// funciones ////////////////
+
+//////////////// clases ////////////////
+- void main() {
+  // new es opcional en la version 2 o superior
+  // final jamas va a poder cambiar el valor, per si podemos cambiar sus propiedades
+-  final wolverine = new Heroe(nombre: 'wolverine', poder: 'regeneracion');
+-  print(wolverine.poder);
+
+-  print(wolverine.toString());
+- }
+
+// es un estandar que inicie con una mayusculas
+- class Heroe {
+-  String nombre;
+-  String poder;
+
+  //Heroe(String nombre, String poder){
+-  Heroe({String nombre = 'Sin Nombre', String poder}) {
+-    this.nombre = nombre;
+-    this.poder = poder;
+-  }
+  // los metodos son los que se encuentran dentro de una funcion
+-  String toString() {
+-    return 'Nombre: ${this.nombre} - Poder: ${this.poder}';
+-  }
+- }
+
+//////////////// clases ////////////////
+
+//////////////// clases trucos ////////////////
+- void main() {
+  // new es opcional en la version 2 o superior
+  // final jamas va a poder cambiar el valor, per si podemos cambiar sus propiedades
+-  final wolverine = new Heroe(nombre: 'wolverine', poder: 'regeneracion');
+-  print(wolverine.poder);
+
+-  print(wolverine.toString());
+- }
+
+// es un estandar que inicie con una mayusculas
+-class Heroe {
+-  String nombre;
+-  String poder;
+
+  //Heroe(String nombre, String poder){
+  // Heroe({String nombre = 'Sin Nombre', String poder}) {
+  //  this.nombre = nombre;
+  //  this.poder = poder;
+  //}
+  
+-  Heroe({this.nombre, this.poder});
+  
+
+  // los metodos son los que se encuentran dentro de una funcion
+    // en las clases no es nesesario poner .this
+  
+- String toString() => 'Nombre: $nombre - Poder: $poder';
+ 
+-}
+
+//////////////// clases trucos ////////////////
