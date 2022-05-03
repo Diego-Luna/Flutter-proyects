@@ -8,16 +8,9 @@ class ListView2Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: const Center(
-            child: Text("ListView 1")
-            ),
-            elevation: 0,
-            backgroundColor: Colors.red,
+        title: const Text("Componentes de Flutter"),
         ),
         body: ListView.separated(
           itemCount: options.length,
@@ -34,7 +27,6 @@ class ListView2Screen extends StatelessWidget {
             ),
           separatorBuilder: (_, __) => const Divider(),
         )
-      )
-    );
+      );
   }
 }

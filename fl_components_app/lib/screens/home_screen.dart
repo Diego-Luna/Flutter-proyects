@@ -1,3 +1,4 @@
+import 'package:fl_components_app/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_components_app/router/app_routes.dart';
 
@@ -9,12 +10,14 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Componentes de Flutter"),
-        elevation: 0,
       ),
       body: ListView.separated(
         itemBuilder: (context, index) => ListTile(
           title: Text(AppRoutes.menuOptions[index].name),
-          leading: Icon(AppRoutes.menuOptions[index].icon),
+          leading: Icon(
+            AppRoutes.menuOptions[index].icon,
+            color: AppTheme.prymary,
+          ),
           onTap: () {
             //Opcion larga pero nos permite tener mas control en la animaciones
             //final route = MaterialPageRoute(

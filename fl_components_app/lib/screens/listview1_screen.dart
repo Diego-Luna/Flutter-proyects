@@ -8,14 +8,9 @@ class ListView1Screen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: const Center(
-            child: Text("ListView 1")
-            ),
+        title: const Text("Componentes de Flutter"),
         ),
         body: ListView(
           children: [
@@ -26,7 +21,6 @@ class ListView1Screen extends StatelessWidget {
             )).toList()
           ],
         )
-      )
-    );
+      );
   }
 }
