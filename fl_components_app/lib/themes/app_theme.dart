@@ -14,6 +14,11 @@ class AppTheme {
       color: prymary,
       elevation: 0,
     ),
+
+    // Text Botton
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(primary: prymary)
+    ),
   );
   static final ThemeData darkTheme =  ThemeData.dark().copyWith(
     // Color primario
