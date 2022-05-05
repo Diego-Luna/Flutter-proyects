@@ -7,7 +7,7 @@ class AppRoutes {
   static const initialRoute = 'home';
 
   static final menuOptions = <MenuOption>[
-    MenuOption(route: 'home', name: 'Home Screen', screen: const HomeScreen(), icon: Icons.home),
+    // MenuOption(route: 'home', name: 'Home Screen', screen: const HomeScreen(), icon: Icons.home),
     MenuOption(route: 'listview1', name: 'ListView1', screen: const ListView1Screen(), icon: Icons.list),
     MenuOption(route: 'listview2', name: 'ListView2', screen: const ListView2Screen(), icon: Icons.list),
     MenuOption(route: 'alert', name: 'Alert', screen: const AlertScreen(), icon: Icons.add_alert),
@@ -20,6 +20,7 @@ class AppRoutes {
 
   Map<String, Widget Function(BuildContext)> appRoutes = {};
 
+  appRoutes.addAll({'home': (BuildContext contex) => const HomeScreen()});
   for(final options in menuOptions){
     appRoutes.addAll({options.route: (BuildContext contex) => options.screen});
   }

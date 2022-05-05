@@ -21,8 +21,8 @@ class ListView2Screen extends StatelessWidget {
                 color: Colors.red,),
               title: Text(options[index]),
               onTap: () {
-                final game = options[index];
-                print(game);
+                //final game = options[index];
+                //print(game);
               },
             ),
           separatorBuilder: (_, __) => const Divider(),
