@@ -15,12 +15,32 @@ class InputsScreen extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                autofocus: true,
+                autofocus: false,
                 initialValue: "Diego",
                 textCapitalization: TextCapitalization.words,
                 onChanged: (value){
                   print(value);
                 },
+                validator: (value){
+                    if (value == null) return  'Este campo es requerido';
+                    return value.length < 3 ? "Minumos de 3 letras" : "";
+                },
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                decoration: const InputDecoration(
+                  hintText: "Nombre del usuario",
+                  labelText: "Nombre",
+                  helperText: "Solo letras",
+                  // counterText: "3 Caracteres",
+                  // prefixIcon: Icon(Icons.verified_user),
+                  suffixIcon: Icon(Icons.group),
+                  icon: Icon(Icons.admin_panel_settings),
+                  focusedBorder: OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10)
+                    )
+                  ),
+                ),
               )
             ],
           ),
