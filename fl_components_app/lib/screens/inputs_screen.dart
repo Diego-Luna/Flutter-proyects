@@ -26,7 +26,7 @@ class InputsScreen extends StatelessWidget {
                     return value.length < 3 ? "Minumos de 3 letras" : "";
                 },
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: const InputDecoration(
+                decoration:  const InputDecoration(
                   hintText: "Nombre del usuario",
                   labelText: "Nombre",
                   helperText: "Solo letras",
@@ -34,7 +34,11 @@ class InputsScreen extends StatelessWidget {
                   // prefixIcon: Icon(Icons.verified_user),
                   suffixIcon: Icon(Icons.group),
                   icon: Icon(Icons.admin_panel_settings),
-                  focusedBorder: OutlineInputBorder(),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.green,
+                    ),
+                  ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(10)
