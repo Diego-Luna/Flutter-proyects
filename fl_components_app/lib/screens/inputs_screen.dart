@@ -15,10 +15,14 @@ class InputsScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: const [
-              CustomIputField(
-                labelText: "nombre",
-                hintText: "Nombre del usuario",
-              )
+              CustomIputField( labelText: "nombre", hintText: "Nombre del usuario"),
+              SizedBox(height: 30),
+              CustomIputField( labelText: "Apellido", hintText: "Apellido del usuario"),
+              SizedBox(height: 30),
+              CustomIputField( labelText: "Correo", hintText: "Correo del usuario", keyboardType: TextInputType.emailAddress,),
+              SizedBox(height: 30),
+              CustomIputField( labelText: "Contrasena", hintText: "Contrasena del usuario", obscureText: true),
+              SizedBox(height: 30),
             ],
           ),
         ),
