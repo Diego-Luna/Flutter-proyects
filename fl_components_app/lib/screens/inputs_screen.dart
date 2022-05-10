@@ -28,13 +28,13 @@ class InputsScreen extends StatelessWidget {
             key: myFormKey,
             child: Column(
               children: [
-                const CustomIputField( labelText: "nombre", hintText: "Nombre del usuario"),
+                CustomIputField( labelText: "nombre", hintText: "Nombre del usuario", formProperty: 'first_name', formValues: formValues),
                 const SizedBox(height: 30),
-                const CustomIputField( labelText: "Apellido", hintText: "Apellido del usuario"),
+                CustomIputField( labelText: "Apellido", hintText: "Apellido del usuario",  formProperty: 'last_name', formValues: formValues),
                 const SizedBox(height: 30),
-                const CustomIputField( labelText: "Correo", hintText: "Correo del usuario", keyboardType: TextInputType.emailAddress,),
+                CustomIputField( labelText: "Correo", hintText: "Correo del usuario", keyboardType: TextInputType.emailAddress,  formProperty: 'email', formValues: formValues),
                 const SizedBox(height: 30),
-                const CustomIputField( labelText: "Contrasena", hintText: "Contrasena del usuario", obscureText: true),
+                CustomIputField( labelText: "Contrasena", hintText: "Contrasena del usuario", obscureText: true,  formProperty: 'password', formValues: formValues),
                 const SizedBox(height: 30),
 
                 ElevatedButton(
