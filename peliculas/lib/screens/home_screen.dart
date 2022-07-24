@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
     // traemos el estado
     final moviesProvider = Provider.of<MoviesProvider>(context);
 
-    print(moviesProvider.obDisplayMovies);
+    print(moviesProvider.onDisplayMovies);
 
     return Scaffold(
         appBar: AppBar(
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              CardSwiper(movies: moviesProvider.obDisplayMovies),
+              CardSwiper(movies: moviesProvider.onDisplayMovies),
               // slider de peliculas
               const MovieSlider()
             ],
