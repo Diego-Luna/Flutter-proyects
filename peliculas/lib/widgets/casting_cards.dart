@@ -5,10 +5,14 @@ class CastingCards extends StatelessWidget {
 
   final int movieId;
 
+  // ignore: use_key_in_widget_constructors
   const CastingCards(this.movieId);
 
   @override
   Widget build(BuildContext context) {
+
+    
+
     return Container(
       margin: const EdgeInsets.only(bottom: 30),
       width: double.infinity,
