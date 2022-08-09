@@ -45,7 +45,7 @@ class Cast {
     bool adult;
     int gender;
     int id;
-    Department knownForDepartment;
+    String knownForDepartment;
     String name;
     String originalName;
     double popularity;
@@ -54,7 +54,7 @@ class Cast {
     String? character;
     String creditId;
     int? order;
-    Department? department;
+    String? department;
     String? job;
 
     get fullprofilePath{

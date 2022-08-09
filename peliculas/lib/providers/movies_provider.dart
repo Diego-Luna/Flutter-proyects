@@ -50,12 +50,12 @@ class MoviesProvider extends ChangeNotifier {
 
   Future<List<Cast>> getMovieCast(int movieId) async{
 
-    print("pidiendo la info al servidor - CAST");
-    final jsonData = await _getJsonData("3/movie/now_playing");
-    final nowPlatingResponse = NowPlayingResponse.fromJson(jsonData);
+    print("Hacemos la peticion");
+    final jsonData = await _getJsonData("3/movie/${movieId}/credits");
+    final creditResponse = CreditsResponse.fromJson(jsonData);
 
-    onDisplayMovies = nowPlatingResponse.results;
-    // lo usamos para que se actualisen los widgets necesarios
-    notifyListeners();
+    moviesCast[movieId] = creditResponse.cast;
+
+    return creditResponse.cast;
   }
 }
