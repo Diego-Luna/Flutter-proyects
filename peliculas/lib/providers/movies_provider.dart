@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/helpers/debouncer.dart';
 import 'package:peliculas/models/models.dart';
 
 class MoviesProvider extends ChangeNotifier {
@@ -13,6 +16,14 @@ class MoviesProvider extends ChangeNotifier {
   Map<int, List<Cast>> moviesCast = {};
 
   int _popularPage = 0;
+
+  final debouncer = Debouncer(duration: const Duration(milliseconds: 500));
+
+  final StreamController<List<Movie>> _suggestionStreamController =
+      new StreamController.broadcast();
+
+  Stream<List<Movie>> get suggestionStream =>
+      _suggestionStreamController.stream;
 
   MoviesProvider() {
     getOnDisplayMovies();
@@ -48,9 +59,8 @@ class MoviesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<Cast>> getMovieCast(int movieId) async{
-
-    if(moviesCast.containsKey(movieId)){
+  Future<List<Cast>> getMovieCast(int movieId) async {
+    if (moviesCast.containsKey(movieId)) {
       return moviesCast[movieId]!;
     }
 
@@ -62,16 +72,12 @@ class MoviesProvider extends ChangeNotifier {
     return creditResponse.cast;
   }
 
-  Future<List<Movie>> searchMovies( String query ) async {
-
-    final url = Uri.https( _baseUrl, '3/search/movie', {
-      'api_key': _apiKey,
-      'language': _language,
-      'query': query
-    });
+  Future<List<Movie>> searchMovies(String query) async {
+    final url = Uri.https(_baseUrl, '3/search/movie',
+        {'api_key': _apiKey, 'language': _language, 'query': query});
 
     final response = await http.get(url);
-    final searchResponse = SearchResponse.fromJson( response.body );
+    final searchResponse = SearchResponse.fromJson(response.body);
 
     return searchResponse.results;
   }
