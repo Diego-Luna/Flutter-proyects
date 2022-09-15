@@ -5,12 +5,20 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: Center(
-        child: Text('Hola mundo'),
-      )
+    return  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        home: TempHomeScreen());
+  }
+}
+
+class TempHomeScreen extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Text('Hello World'), Text('Hello World')],
     );
   }
 }
