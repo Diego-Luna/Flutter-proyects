@@ -18,31 +18,30 @@ class CastingCards extends StatelessWidget {
     final moviesProvider = Provider.of<MoviesProvider>(context, listen: false);
 
     return FutureBuilder(
-        future: moviesProvider.getMovieCast(movieId),
-        builder: (_, AsyncSnapshot<List<Cast>> snapshot) {
-
-          // if (true){
-          if (!(snapshot.hasData)){
-            return Container(
-              constraints: const BoxConstraints(maxWidth: 150),
-              height: 180,
-              child: const CupertinoActivityIndicator(),
-            );
-          }
-
-          final List<Cast> cast = snapshot.data!;
-
+      future: moviesProvider.getMovieCast(movieId),
+      builder: (_, AsyncSnapshot<List<Cast>> snapshot) {
+        if (!snapshot.hasData) {
           return Container(
-            margin: const EdgeInsets.only(bottom: 30),
-            width: double.infinity,
+            constraints: const BoxConstraints(maxWidth: 150),
             height: 180,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (_, int index) => _CastCard(actor: cast[index]),
-            ),
+            child: const CupertinoActivityIndicator(),
           );
-        });
+        }
+
+        final List<Cast> cast = snapshot.data!;
+
+        return Container(
+          margin: const EdgeInsets.only(bottom: 30),
+          width: double.infinity,
+          height: 180,
+          child: ListView.builder(
+            itemCount: cast.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (_, int index) => _CastCard(actor: cast[index]),
+          ),
+        );
+      },
+    );
   }
 }
 

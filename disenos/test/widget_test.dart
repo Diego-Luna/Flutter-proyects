@@ -1,7 +1,11 @@
 // This is a basic Flutter widget test.
 //
 // To perform an interaction with a widget in your test, use the WidgetTester
+<<<<<<< HEAD
 // utility that Flutter provides. For example, you can send tap and scroll
+=======
+// utility in the flutter_test package. For example, you can send tap and scroll
+>>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 

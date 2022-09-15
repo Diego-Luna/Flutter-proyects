@@ -18,7 +18,11 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
+<<<<<<< HEAD
   sdk: ">=2.16.2 <3.0.0"
+=======
+  sdk: ">=2.17.6 <3.0.0"
+>>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -44,12 +48,20 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
+<<<<<<< HEAD
   flutter_lints: ^1.0.0
+=======
+  flutter_lints: ^2.0.0
+>>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+<<<<<<< HEAD
 # The following section is specific to Flutter.
+=======
+# The following section is specific to Flutter packages.
+>>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 flutter:
 
   # The following line ensures that the Material Icons font is
@@ -63,7 +75,11 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
+<<<<<<< HEAD
   # https://flutter.dev/assets-and-images/#resolution-aware.
+=======
+  # https://flutter.dev/assets-and-images/#resolution-aware
+>>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
