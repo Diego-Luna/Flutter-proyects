@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-# This file controls Flutter-level build steps. It should not be edited.
->>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 cmake_minimum_required(VERSION 3.14)
 
 set(EPHEMERAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/ephemeral")

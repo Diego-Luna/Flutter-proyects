@@ -8,10 +8,6 @@
 .buildlog/
 .history
 .svn/
-<<<<<<< HEAD
-=======
-migrate_working_dir/
->>>>>>> 372017c1b6d943de46dd4949a1f935e7c54c8d5d
 
 # IntelliJ related
 *.iml
