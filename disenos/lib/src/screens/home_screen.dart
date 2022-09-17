@@ -1,4 +1,5 @@
 import 'package:disenos/src/widgets/background.dart';
+import 'package:disenos/src/widgets/page_title.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,9 +11,30 @@ class HomeScreen extends StatelessWidget {
       body: Stack(
         children: [
           // background
-          Background()
+          Background(),
+
+          // Home body
+          _HomeBody(),
         ],
       ),
-   );
+    );
+  }
+}
+
+class _HomeBody extends StatelessWidget {
+  const _HomeBody({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          // Titulos
+          PageTitle()
+        ],
+      ),
+    );
   }
 }
