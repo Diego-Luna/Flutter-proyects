@@ -2,6 +2,7 @@ import 'package:disenos/src/widgets/background.dart';
 import 'package:disenos/src/widgets/page_title.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/card_table.dart';
 import '../widgets/custom_bottom_navigation.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,7 +36,10 @@ class _HomeBody extends StatelessWidget {
       child: Column(
         children: [
           // Titulos
-          PageTitle()
+          PageTitle(),
+
+          // Card Table
+          CardTable()
         ],
       ),
     );
