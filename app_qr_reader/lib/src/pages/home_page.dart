@@ -1,3 +1,5 @@
+import 'package:app_qr_reader/src/pages/direcciones_page.dart';
+import 'package:app_qr_reader/src/pages/mapas_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/custom_navigatorbar.dart';
@@ -16,12 +18,29 @@ class HomePage extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.delete_forever))
         ],
       ),
-      body: const Center(
-        child: Text('Hola Mundo'),
-      ),
+      body: _HomePageBody(),
       bottomNavigationBar: const CustomNavigatorBar(),
       floatingActionButton: const ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+}
+
+class _HomePageBody extends StatelessWidget {
+  const _HomePageBody({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Cambiar para mostrat la pantalla
+    final currentIndex = 0;
+
+    switch (currentIndex) {
+      case 0:
+        return MapasPage();
+      case 1:
+        return DireccionesPage();
+      default:
+        return MapasPage();
+    }
   }
 }
