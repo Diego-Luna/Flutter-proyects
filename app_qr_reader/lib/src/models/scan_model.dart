@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class ScanModel {
 
   ScanModel({
-    required this.id,
-    required this.tipo,
+    this.id,
+    this.tipo,
     required this.valor,
   }){
-    if (this.tipo.contains('http'))
+    if (this.valor.contains('http') || this.valor.contains('https'))
     {
       this.tipo = 'http';
     }else{
@@ -15,8 +15,8 @@ class ScanModel {
     }
   }
 
-  int id;
-  String tipo;
+  int? id;
+  String? tipo;
   String valor;
 
   factory ScanModel.fromJson(Map<String, dynamic> json) => new ScanModel(

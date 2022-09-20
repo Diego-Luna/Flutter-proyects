@@ -34,7 +34,6 @@ class _HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // obtener el selected menu opt
     final uiProvider = Provider.of<UiProvider>(context);
 
@@ -42,7 +41,9 @@ class _HomePageBody extends StatelessWidget {
     final currentIndex = uiProvider.selectedMenuOpt;
 
     // TODO: Temporal leer la base de datos
-    DBProvider.db.database; 
+    DBProvider.db.database;
+    final temScan = new ScanModel(valor: 'https://moonmakers.org/');
+    DBProvider.db.nuevoScan(temScan);
 
     switch (currentIndex) {
       case 0:
