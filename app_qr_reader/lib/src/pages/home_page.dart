@@ -1,5 +1,6 @@
 import 'package:app_qr_reader/src/pages/direcciones_page.dart';
 import 'package:app_qr_reader/src/pages/mapas_page.dart';
+import 'package:app_qr_reader/src/providers/db_provider.dart';
 import 'package:app_qr_reader/src/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -39,6 +40,9 @@ class _HomePageBody extends StatelessWidget {
 
     // Cambiar para mostrat la pantalla
     final currentIndex = uiProvider.selectedMenuOpt;
+
+    // TODO: Temporal leer la base de datos
+    DBProvider.db.database; 
 
     switch (currentIndex) {
       case 0:
