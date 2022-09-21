@@ -41,8 +41,8 @@ class _HomePageBody extends StatelessWidget {
     final currentIndex = uiProvider.selectedMenuOpt;
 
     // TODO: Temporal leer la base de datos
-    DBProvider.db.database;
-    final temScan = new ScanModel(valor: 'https://moonmakers.org/');
+    // DBProvider.db.database;
+    // final temScan = new ScanModel(valor: 'https://moonmakers.org/');
     // DBProvider.db.deleteAllScan().then((value) => print(value));
 
     switch (currentIndex) {
