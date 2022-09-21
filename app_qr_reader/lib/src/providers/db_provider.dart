@@ -104,13 +104,21 @@ class DBProvider {
   }
 
   Future<List<ScanModel>?> getScansPorTipo(String tipo) async {
-    final db = await database;
+    final db  = await database;
     final res = await db!.rawQuery('''
-      SELECT * FROM Scans WHERE tipo = $tipo
+      SELECT * FROM Scans WHERE tipo = '$tipo'
     ''');
+
     return res.isNotEmpty
-        ? res.map((e) => ScanModel.fromJson(e)).toList()
-        : [];
+          ? res.map( (s) => ScanModel.fromJson(s) ).toList()
+          : [];
+    // final db = await database;
+    // final res = await db!.rawQuery('''
+    //   SELECT * FROM Scans WHERE tipo = $tipo
+    // ''');
+    // return res.isNotEmpty
+    //     ? res.map((e) => ScanModel.fromJson(e)).toList()
+    //     : [];
   }
 
   Future<int> updateScan(ScanModel nuevoScan) async {

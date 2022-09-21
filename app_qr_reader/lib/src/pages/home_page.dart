@@ -1,6 +1,7 @@
 import 'package:app_qr_reader/src/pages/direcciones_page.dart';
 import 'package:app_qr_reader/src/pages/mapas_page.dart';
 import 'package:app_qr_reader/src/providers/db_provider.dart';
+import 'package:app_qr_reader/src/providers/scan_list_provider.dart';
 import 'package:app_qr_reader/src/providers/ui_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +41,10 @@ class _HomePageBody extends StatelessWidget {
     // Cambiar para mostrat la pantalla
     final currentIndex = uiProvider.selectedMenuOpt;
 
+    // TODO: Usar el scan provider
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
+
     // TODO: Temporal leer la base de datos
     // DBProvider.db.database;
     // final temScan = new ScanModel(valor: 'https://moonmakers.org/');
@@ -47,8 +52,10 @@ class _HomePageBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.cargarScansPorTipo('geo');
         return MapasPage();
       case 1:
+        scanListProvider.cargarScansPorTipo('http');
         return DireccionesPage();
       default:
         return MapasPage();
