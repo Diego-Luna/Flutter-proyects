@@ -1,7 +1,6 @@
 import 'package:app_qr_reader/src/providers/scan_list_provider.dart';
 import 'package:app_qr_reader/src/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:provider/provider.dart';
 
 class ScanButton extends StatelessWidget {
@@ -16,7 +15,7 @@ class ScanButton extends StatelessWidget {
         //     '#3D8BEF', 'Cancelar', false, ScanMode.QR);
         final barcodeScanRes = 'geo:19.428554281649767,-99.20668869066994';
 
-        if (barcodeScanRes == -1) {
+        if (barcodeScanRes == -1 || barcodeScanRes == "-1") {
           return;
         }
 
