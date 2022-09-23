@@ -21,11 +21,14 @@ class _MapaPageState extends State<MapaPage> {
     final ScanModel scan =
         ModalRoute.of(context)?.settings.arguments as ScanModel;
 
-    final CameraPosition puntoInicial = CameraPosition(
-      target: scan.getLantLng(),
-      zoom: 17,
-      tilt: 50
-    );
+    final CameraPosition puntoInicial =
+        CameraPosition(target: scan.getLantLng(), zoom: 17, tilt: 50);
+
+    // Marcadores
+    Set<Marker> markers = new Set<Marker>();
+    markers.add(new Marker(
+        markerId: MarkerId('geo-location'), position: scan.getLantLng()));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Mapa'),
@@ -33,6 +36,7 @@ class _MapaPageState extends State<MapaPage> {
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: puntoInicial,
+        markers: markers,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
