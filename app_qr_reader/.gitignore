@@ -47,3 +47,5 @@ app.*.map.json
 
 /ios/Runner/AppDelegate.swift
 /android/app/src/main/AndroidManifest.xml
+AppDelegate.swift
+AndroidManifest.xml
