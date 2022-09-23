@@ -1,3 +1,7 @@
+app_qr_reader/ios/Runner/AppDelegate.swift
+app_qr_reader/android/app/src/main/AndroidManifest.xml
+
+
 .DS_Store
 **/**/.DS_Store
 
