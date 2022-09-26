@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:preferences_app/share_preferences/preferences.dart';
 
 import '../widgets/widgets.dart';
 
@@ -11,9 +12,9 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool isDarkMode = false;
-  int geneder = 1;
-  String name = 'Diego';
+  // bool isDarkMode = Preferences.isDarkmode;
+  // int geneder = 1;
+  // String name = 'Diego';
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +33,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
               const Divider(),
               SwitchListTile.adaptive(
-                value: isDarkMode,
+                value: Preferences.isDarkmode,
                 onChanged: (value) {
-                  isDarkMode = value;
+                  Preferences.isDarkmode = value;
                   setState(() {});
                 },
                 title: const Text('Dark mode'),
@@ -42,29 +43,29 @@ class _SettingsScreenState extends State<SettingsScreen> {
               const Divider(),
               RadioListTile<int>(
                   value: 1,
-                  groupValue: geneder,
+                  groupValue: Preferences.gender,
                   title: const Text('Masculino'),
                   onChanged: (value) {
-                    geneder = value ?? 1;
+                    Preferences.gender = value ?? 1;
                     setState(() {});
                   }),
               const Divider(),
               RadioListTile<int>(
                   value: 2,
-                  groupValue: geneder,
+                  groupValue: Preferences.gender,
                   title: const Text('Femenino'),
                   onChanged: (value) {
-                    geneder = value ?? 2;
+                    Preferences.gender = value ?? 2;
                     setState(() {});
                   }),
               const Divider(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: TextFormField(
-                  initialValue: name,
+                  initialValue: Preferences.name,
                   onChanged: (value) {
                     setState(() {
-                      name = value;
+                      Preferences.name = value;
                     });
                   },
                   decoration: const InputDecoration(
