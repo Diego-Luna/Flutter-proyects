@@ -92,21 +92,30 @@ class _LoginForm extends StatelessWidget {
                 height: 30,
               ),
               MaterialButton(
-                onPressed: () {
-                  // Todo: Login form
-                  if (!loginForm.isValidFrom()) return;
+                onPressed: loginForm.isLoading
+                    ? null
+                    : () async {
+                        // Todo: Login form
 
-                  Navigator.pushReplacementNamed(context, 'home');
-                },
+                        FocusScope.of(context).unfocus();
+
+                        if (!loginForm.isValidFrom()) return;
+
+                        loginForm.isLoading = true;
+                        await Future.delayed(Duration(seconds: 2));
+                        loginForm.isLoading = false;
+                        Navigator.pushReplacementNamed(context, 'home');
+                      },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 disabledColor: Colors.grey,
                 elevation: 0,
                 color: Colors.deepPurple,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
-                  child: const Text(
-                    'Ingresar',
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                  child: Text(
+                    loginForm.isLoading ? 'Espere' : 'Ingresar',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
