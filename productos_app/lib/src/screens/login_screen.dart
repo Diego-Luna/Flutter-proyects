@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/src/providers/login_form_provider.dart';
 import 'package:productos_app/src/ui/input_decorations.dart';
 import 'package:productos_app/src/widgets/widgets.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -21,7 +23,8 @@ class LoginScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline4,
                 ),
                 const SizedBox(height: 30),
-                _LoginForm()
+                ChangeNotifierProvider(
+                    create: (_) => LoginFormProvider(), child: _LoginForm()),
               ]),
             ),
             const SizedBox(height: 50),
@@ -40,9 +43,12 @@ class LoginScreen extends StatelessWidget {
 class _LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final loginForm = Provider.of<LoginFormProvider>(context);
+
     return Container(
       // todo> mantener la referencia al key
       child: Form(
+          key: loginForm.formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
@@ -53,6 +59,7 @@ class _LoginForm extends StatelessWidget {
                     hintText: 'john.dow@gmail.com',
                     labelText: 'Correo electronico',
                     prefixIcon: Icons.alternate_email_rounded),
+                onChanged: (value) => loginForm.email = value,
                 validator: (value) {
                   String pattern =
                       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -74,6 +81,7 @@ class _LoginForm extends StatelessWidget {
                     hintText: '****',
                     labelText: 'Password',
                     prefixIcon: Icons.lock_outline),
+                onChanged: (value) => loginForm.password = value,
                 validator: (value) {
                   if (value != null && value.length >= 6) return null;
 
@@ -86,6 +94,9 @@ class _LoginForm extends StatelessWidget {
               MaterialButton(
                 onPressed: () {
                   // Todo: Login form
+                  if (!loginForm.isValidFrom()) return;
+
+                  Navigator.pushReplacementNamed(context, 'home');
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
@@ -93,7 +104,7 @@ class _LoginForm extends StatelessWidget {
                 elevation: 0,
                 color: Colors.deepPurple,
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                  padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
                   child: const Text(
                     'Ingresar',
                     style: TextStyle(color: Colors.white),
