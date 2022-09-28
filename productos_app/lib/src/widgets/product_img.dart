@@ -15,7 +15,8 @@ class ProductImage extends StatelessWidget {
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(45), topRight: Radius.circular(45)),
           child: FadeInImage(
-            image: NetworkImage('https://via.placeholder.com/400x300/green'),
+            image: NetworkImage('https://www.google.com.mx/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'),
+            // image: NetworkImage('https://via.placeholder.com/400x300/green'),
             placeholder: AssetImage('assets/jar-loading.gif'),
             fit: BoxFit.cover,
           ),

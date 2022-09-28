@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
         decoration: _cardBorders(),
         child: Stack(
           alignment: Alignment.bottomLeft,
-          children: const[
+          children: const [
             _BackgroundImage(),
             _ProductDetails(),
             Positioned(
@@ -165,9 +165,10 @@ class _BackgroundImage extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: 400,
-        child: FadeInImage(
+        child: const FadeInImage(
           placeholder: AssetImage('assets/no-image.png'),
-          image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
+          image: NetworkImage('https://www.google.com.mx/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png'),
+          // image: NetworkImage('https://via.placeholder.com/400x300/f6f6f6'),
           fit: BoxFit.cover,
         ),
       ),

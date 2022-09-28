@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
       ),
       // ListView.builder, creara los widgets de forma peresosa
       body: ListView.builder(
-        itemCount: 10,
+        itemCount: 1,
         itemBuilder: (BuildContext context, int index) => GestureDetector(
           child: ProductCard(),
           onTap: () => Navigator.pushNamed(context, 'product'),
