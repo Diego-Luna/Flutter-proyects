@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:productos_app/src/providers/product_form_provider.dart';
 import 'package:productos_app/src/services/services.dart';
 import 'package:productos_app/src/ui/input_decorations.dart';
 import 'package:productos_app/src/widgets/widgets.dart';
@@ -11,6 +12,23 @@ class ProductScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productsService = Provider.of<ProductsService>(context);
 
+    return ChangeNotifierProvider(
+      create: (_) => ProductFormProvider(productsService.selectedProduct),
+      child: _ProdutScreenBody(productsService: productsService),
+    );
+  }
+}
+
+class _ProdutScreenBody extends StatelessWidget {
+  const _ProdutScreenBody({
+    Key? key,
+    required this.productsService,
+  }) : super(key: key);
+
+  final ProductsService productsService;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -61,6 +79,9 @@ class _ProductForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productForm = Provider.of<ProductFormProvider>(context);
+    final product = productForm.product;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
@@ -75,6 +96,13 @@ class _ProductForm extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
+              initialValue: product.name,
+              onChanged: (value) => product.name = value,
+              validator: (value) {
+                if (value == null || value.length < 1) {
+                  return "El nombre es obligatorio";
+                }
+              },
               decoration: InputDecorations.authInputDecoration(
                   hintText: 'Nombre del producto', labelText: 'Nombre'),
             ),
@@ -82,6 +110,14 @@ class _ProductForm extends StatelessWidget {
               height: 30,
             ),
             TextFormField(
+              initialValue: '${product.price}',
+              onChanged: (value) {
+                if (double.tryParse(value) == null) {
+                  product.price = 0.0;
+                } else {
+                  product.price = double.parse(value);
+                }
+              },
               keyboardType: TextInputType.number,
               decoration: InputDecorations.authInputDecoration(
                   hintText: '\$150', labelText: 'Precio'),
