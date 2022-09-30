@@ -9,6 +9,7 @@ class ProductsService extends ChangeNotifier {
   final String _baseUrl =
       '';
   final List<Product> products = [];
+  late Product selectedProduct;
   bool isLoading = true;
 
   ProductsService() {

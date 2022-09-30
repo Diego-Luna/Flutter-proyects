@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final productsService = Provider.of<ProductsService>(context);
 
     if (productsService.isLoading) return const LoadingScreen();
@@ -20,8 +19,15 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: productsService.products.length,
         itemBuilder: (BuildContext context, int index) => GestureDetector(
-          child: ProductCard(product: productsService.products[index],),
-          onTap: () => Navigator.pushNamed(context, 'product'),
+          child: ProductCard(
+            product: productsService.products[index],
+          ),
+          onTap: () {
+            productsService.selectedProduct =
+                productsService.products[index].copy();
+            print(productsService.selectedProduct);
+            Navigator.pushNamed(context, 'product');
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
