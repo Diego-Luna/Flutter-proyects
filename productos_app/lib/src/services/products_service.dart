@@ -52,7 +52,7 @@ class ProductsService extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<String> updateProduct(Product product) async{
+  Future<String> updateProduct(Product product) async {
     final url = Uri.https(_baseUrl, 'products/${product.id}.json');
     final resp = await http.put(url, body: product.toJson());
 
@@ -60,6 +60,9 @@ class ProductsService extends ChangeNotifier {
     print(decodedData);
 
     // actualisar el listadi de productos
+    final index =
+        this.products.indexWhere((element) => element.id == product.id);
+    products[index] = product;
 
     return product.id!;
   }
