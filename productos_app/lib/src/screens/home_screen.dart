@@ -4,6 +4,8 @@ import 'package:productos_app/src/services/services.dart';
 import 'package:productos_app/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../models/models.dart';
+
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,10 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          productsService.selectedProduct = new Product(available: true, price: 0, name: '');
+          Navigator.pushNamed(context, 'product');
+        },
         child: Icon(Icons.add),
       ),
     );
