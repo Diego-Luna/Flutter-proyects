@@ -67,6 +67,7 @@ class _ProdutScreenBody extends StatelessWidget {
                           return;
                         }
                         print('Tenemos imagen ${pickedFile.path}');
+                        productsService.updateSelectedProductImage(pickedFile.path);
                       },
                     )),
               ],
