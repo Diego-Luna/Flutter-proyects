@@ -88,4 +88,37 @@ class ProductsService extends ChangeNotifier {
     newPictureFile = File.fromUri(Uri(path: path));
     notifyListeners();
   }
+
+  Future<String?> uploadImage() async {
+    if (newPictureFile == null) return null;
+
+    print('--');
+    print(newPictureFile!.path);
+    print('--');
+
+    isSaving = true;
+    notifyListeners();
+    final url = Uri.parse(
+        '');
+
+    final imageUploadRequest = http.MultipartRequest('POST', url);
+    final file =
+        await http.MultipartFile.fromPath('file', newPictureFile!.path);
+
+    imageUploadRequest.files.add(file);
+
+    final streamResponse = await imageUploadRequest.send();
+    final res = await http.Response.fromStream(streamResponse);
+
+    if (res.statusCode != 200 && res.statusCode != 201) {
+      print('Algo salio mal');
+      print(res.body);
+      return null;
+    }
+
+    newPictureFile = null;
+
+    final decodedData = json.decode(res.body);
+    return decodedData['secure_url'];
+  }
 }

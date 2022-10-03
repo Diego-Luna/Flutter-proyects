@@ -67,7 +67,8 @@ class _ProdutScreenBody extends StatelessWidget {
                           return;
                         }
                         print('Tenemos imagen ${pickedFile.path}');
-                        productsService.updateSelectedProductImage(pickedFile.path);
+                        productsService
+                            .updateSelectedProductImage(pickedFile.path);
                       },
                     )),
               ],
@@ -84,6 +85,9 @@ class _ProdutScreenBody extends StatelessWidget {
         child: Icon(Icons.save_outlined),
         onPressed: () async {
           if (!productForm.idValidForm()) return;
+
+          final String? imageUrl = await productsService.uploadImage();
+          print(imageUrl);
 
           await productsService.saveOrCreateProduct(productForm.product);
         },
