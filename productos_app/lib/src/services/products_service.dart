@@ -92,10 +92,6 @@ class ProductsService extends ChangeNotifier {
   Future<String?> uploadImage() async {
     if (newPictureFile == null) return null;
 
-    print('--');
-    print(newPictureFile!.path);
-    print('--');
-
     isSaving = true;
     notifyListeners();
     final url = Uri.parse(

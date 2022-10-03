@@ -54,22 +54,43 @@ class _ProdutScreenBody extends StatelessWidget {
                 Positioned(
                     top: 60,
                     right: 20,
-                    child: IconButton(
-                      icon: const Icon(Icons.camera_alt_outlined,
-                          size: 40, color: Colors.white),
-                      onPressed: () async {
-                        final picker = new ImagePicker();
-                        final PickedFile? pickedFile = await picker.getImage(
-                            source: ImageSource.gallery, imageQuality: 100);
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.image_search_outlined,
+                              size: 40, color: Colors.white),
+                          onPressed: () async {
+                            final picker = new ImagePicker();
+                            final PickedFile? pickedFile = await picker.getImage(
+                                source: ImageSource.gallery, imageQuality: 100);
 
-                        if (pickedFile == null) {
-                          print('No selecciono nada');
-                          return;
-                        }
-                        print('Tenemos imagen ${pickedFile.path}');
-                        productsService
-                            .updateSelectedProductImage(pickedFile.path);
-                      },
+                            if (pickedFile == null) {
+                              print('No selecciono nada');
+                              return;
+                            }
+                            print('Tenemos imagen ${pickedFile.path}');
+                            productsService
+                                .updateSelectedProductImage(pickedFile.path);
+                          },
+                        ),
+                        IconButton(
+                          icon: const Icon(Icons.camera_alt_outlined,
+                              size: 40, color: Colors.white),
+                          onPressed: () async {
+                            final picker = new ImagePicker();
+                            final PickedFile? pickedFile = await picker.getImage(
+                                source: ImageSource.camera, imageQuality: 100);
+
+                            if (pickedFile == null) {
+                              print('No selecciono nada');
+                              return;
+                            }
+                            print('Tenemos imagen ${pickedFile.path}');
+                            productsService
+                                .updateSelectedProductImage(pickedFile.path);
+                          },
+                        ),
+                      ],
                     )),
               ],
             ),
