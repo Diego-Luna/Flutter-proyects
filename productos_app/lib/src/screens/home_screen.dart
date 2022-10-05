@@ -7,15 +7,24 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final productsService = Provider.of<ProductsService>(context);
+    final authService = Provider.of<AuthService>(context, listen: false);
 
     if (productsService.isLoading) return const LoadingScreen();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Productos'),
+        title: const Text('Productos'),
+        leading: IconButton(
+            icon: Icon(Icons.login_outlined),
+            onPressed: () {
+              authService.logout();
+              Navigator.pushReplacementNamed(context, 'login');
+            }),
       ),
       // ListView.builder, creara los widgets de forma peresosa
       body: ListView.builder(
@@ -34,10 +43,11 @@ class HomeScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          productsService.selectedProduct = new Product(available: true, price: 0, name: '');
+          productsService.selectedProduct =
+              new Product(available: true, price: 0, name: '');
           Navigator.pushNamed(context, 'product');
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
