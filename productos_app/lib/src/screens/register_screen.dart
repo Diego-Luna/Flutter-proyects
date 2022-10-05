@@ -4,6 +4,8 @@ import 'package:productos_app/src/ui/input_decorations.dart';
 import 'package:productos_app/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../services/services.dart';
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);
 
@@ -31,8 +33,7 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 50),
             TextButton(
-              onPressed: () =>
-                  Navigator.pushReplacementNamed(context, 'login'),
+              onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
               style: ButtonStyle(
                   overlayColor:
                       MaterialStateProperty.all(Colors.indigo.withOpacity(0.1)),
@@ -108,13 +109,23 @@ class _LoginForm extends StatelessWidget {
                         // Todo: Login form
 
                         FocusScope.of(context).unfocus();
+                        final authService =
+                            Provider.of<AuthService>(context, listen: false);
 
                         if (!loginForm.isValidFrom()) return;
 
                         loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
+
+                        final String? errorMessage = await authService
+                            .createUser(loginForm.email, loginForm.password);
+
+                        if (errorMessage == null) {
+                          Navigator.pushReplacementNamed(context, 'home');
+                        } else {
+                          // TODO mostrar error en pantalla
+                          print(errorMessage);
+                        }
                         loginForm.isLoading = false;
-                        Navigator.pushReplacementNamed(context, 'home');
                       },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
