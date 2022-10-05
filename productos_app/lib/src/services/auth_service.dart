@@ -7,7 +7,7 @@ class AuthService extends ChangeNotifier {
   final String _baseUrl = 'identitytoolkit.googleapis.com';
   final String _firebaseToken = '';
 
-//  Si retornamos algo es un error
+  //  Si retornamos algo es un error
   Future<String?> createUser(String email, String password) async {
     final Map<String, dynamic> authData = {
       'email': email,
@@ -20,13 +20,33 @@ class AuthService extends ChangeNotifier {
     final resp = await http.post(url, body: json.encode(authData));
     final Map<String, dynamic> decodeResp = json.decode(resp.body);
 
-    if (decodeResp.containsKey('idToken')){
+    if (decodeResp.containsKey('idToken')) {
       // token, hay que guardarlo en un ligar seguro
       return null;
-    }else{
-
+    } else {
       return decodeResp['error']['message'];
     }
     // print(decodeResp);
+  }
+
+  //  Si retornamos algo es un error
+  Future<String?> login(String email, String password) async {
+    final Map<String, dynamic> authData = {
+      'email': email,
+      'password': password
+    };
+
+    final url = Uri.https(
+        _baseUrl, '/v1/accounts:signInWithPassword', {'key': _firebaseToken});
+
+    final resp = await http.post(url, body: json.encode(authData));
+    final Map<String, dynamic> decodeResp = json.decode(resp.body);
+
+    if (decodeResp.containsKey('idToken')) {
+      // token, hay que guardarlo en un ligar seguro
+      return null;
+    } else {
+      return decodeResp['error']['message'];
+    }
   }
 }

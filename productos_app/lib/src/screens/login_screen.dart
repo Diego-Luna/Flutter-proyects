@@ -4,6 +4,8 @@ import 'package:productos_app/src/ui/input_decorations.dart';
 import 'package:productos_app/src/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
+import '../services/services.dart';
+
 class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -106,13 +108,23 @@ class _LoginForm extends StatelessWidget {
                         // Todo: Login form
 
                         FocusScope.of(context).unfocus();
+                        final authService =
+                            Provider.of<AuthService>(context, listen: false);
 
                         if (!loginForm.isValidFrom()) return;
 
                         loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
-                        loginForm.isLoading = false;
-                        Navigator.pushReplacementNamed(context, 'home');
+
+                        final String? errorMessage = await authService
+                            .login(loginForm.email, loginForm.password);
+
+                        if (errorMessage == null) {
+                          Navigator.pushReplacementNamed(context, 'home');
+                        } else {
+                          // TODO mostrar error en pantalla
+                          print(errorMessage);
+                          loginForm.isLoading = false;
+                        }
                       },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
