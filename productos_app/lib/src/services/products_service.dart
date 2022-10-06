@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:productos_app/src/models/product.dart';
-import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 
 class ProductsService extends ChangeNotifier {

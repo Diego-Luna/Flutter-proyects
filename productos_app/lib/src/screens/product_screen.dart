@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:productos_app/src/providers/product_form_provider.dart';
 import 'package:productos_app/src/services/services.dart';
 import 'package:productos_app/src/ui/input_decorations.dart';
@@ -65,7 +66,7 @@ class _ProdutScreenBody extends StatelessWidget {
                                 source: ImageSource.gallery);
 
                             if (pickedFile == null) {
-                              print('No selecciono nada');
+                              print('No funciona el picker');
                               return;
                             }
                             print('Tenemos imagen ${pickedFile.path}');
