@@ -9,7 +9,11 @@ class MessageScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Message'),
       ),
-      body: Center(child: Text('Message Screen')),
+      body: Center(
+          child: Text(
+        'Message Screen',
+        style: TextStyle(fontSize: 30),
+      )),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:notificaciones/screens/home_screens.dart';
+import 'package:notificaciones/screens/message_screen.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,8 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      initialRoute: '/',
-
+      initialRoute: 'home',
+      routes: {
+        'home': (_) => HomeScreen(),
+        'message': (_) => MessageScreen(),
+      },
     );
   }
 }
